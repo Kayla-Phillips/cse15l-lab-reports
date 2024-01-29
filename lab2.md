@@ -1,7 +1,53 @@
 # Lab Report 2
 ## Part 1
 ## ChatServer Code
-![Image](lab2CodeFinal.png)
+```
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+class Handler implements URLHandler {
+    public String handleRequest(URI url) {
+        String message = "";
+        String user = "";
+        String currentMessage = "";
+        System.out.println(url.getPath());
+        System.out.println(ChatServer.allMessages);
+        if (url.getPath().equals("/add-message")) {
+            String[] parameters = url.getQuery().split("&");
+            String[] messageSplit = parameters[0].split("=");
+            String[] userSplit = parameters[1].split("=");
+            if (messageSplit[0].equals("s")) {
+                message = messageSplit[1];
+            }
+            if(userSplit[0].equals("user")){
+                user = userSplit[1];
+            }
+            currentMessage = String.format("%s: %s\n", user, message);
+            ChatServer.allMessages += currentMessage;
+        } 
+        return ChatServer.allMessages;
+    }
+}
+        
+        
+        
+
+class ChatServer {
+    public static String allMessages = "";
+    public static void main(String[] args) throws IOException {
+        if(args.length == 0){
+            System.out.println("Missing port number! Try any number between 1024 to 49151");
+            return;
+        }
+
+        int port = Integer.parseInt(args[0]);
+
+        Server.start(port, new Handler());
+    }
+}
+```
 ## ChatServer in Action
 ![Image](lab2Pic1.png)
 * First, the `main` method of the `ChatServer` class is called, the `allMessages` string is initialized and assigned to an empty string, and the `Server` is started given the port number from `args`. The `Server` then runs the `start` method which creates a new `Handler` object. The `url` from the server is passed in as an argument to the `handleRequest` method. Since the `url.getPath()` returns `add-message`, the components of the query are split into various arrays. In this case, `parameters` would be set to `{s=hello,user=kayla}`, `messageSplit` would be set to `{s,hello}`, `userSplit` would be set to `{user,kayla}`, `currentMessage` would be set to`kayla: hello\n`, and `allMessages` would also be set to `kayla: hello\n` which is returned and displayed onto the site. 
