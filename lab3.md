@@ -52,11 +52,13 @@ Source: https://man7.org/linux/man-pages/man1/grep.1.html#OPTIONS
 * -c or --count prints the number of lines that match the given pattern in the given file\
 * This option is useful for simply knowing the frequency of a pattern without any specific information about each match.
 * Example 1
+
 ```
 grep -c "LSC" ./government/About_LSC/Comments_on_semiannual.txt 
 79
 ```
 * Example 2
+
 ```
 grep -c "weight" ./biomed/1468-6708-3-1.txt
 54
@@ -65,7 +67,6 @@ grep -c "weight" ./biomed/1468-6708-3-1.txt
 * -v or --invert-match prints the lines from the file that don't match the given pattern
 * This option can be useful if there are a few lines that don't match a certain pattern
 * Example 1
-
 
 ```
 grep -v "the" ./government/Media/5_Legal_Groups.txt 
@@ -91,6 +92,7 @@ Sweet Candy Company building for Tomax. The Olafsons are delighted
 cost received so far. There still needed to be furnishings and
 ```
 * Example 2
+
 ```
 grep -v "a" ./plos/journal.pbio.0020001.txt 
 
@@ -130,6 +132,7 @@ grep -v "a" ./plos/journal.pbio.0020001.txt
 * -n or --line-number prints the lines in the file that match the pattern and adds the line number before each line (1-based)
 * This option is useful if it's important to know the line number of the pattern matches.
 * Example 1
+
 ```
 grep -n "service" ./government/Post_Rate_Comm/Cohenetal_comparison.txt 
 22:Obligation (USO) is the last refuge of a postal service wishing to
@@ -169,6 +172,7 @@ grep -n "service" ./government/Post_Rate_Comm/Cohenetal_comparison.txt
 705:universal service.
 ```
 * Example 2
+
 ```
 grep -n "heart" ./biomed/1468-6708-3-10.txt 
 11:        compare the rate of fatal coronary heart disease (CHD) or
@@ -179,6 +183,7 @@ grep -n "heart" ./biomed/1468-6708-3-10.txt
 * -l or --files-with-matches prints the name of each of the input files that contains the pattern
 * This option is useful if only the file names matter and not specifics about the line that matched.
 * Example 1
+  
 ```
 grep -l "fugitive" ./911report/*
 ./911report/chapter-2.txt
@@ -186,6 +191,7 @@ grep -l "fugitive" ./911report/*
 ./911report/chapter-8.txt
 ```
 * Example 2
+  
 ```
 grep -l "reproduction" ./government/Env_Prot_Agen/*
 ./government/Env_Prot_Agen/1-3_meth_901.txt
