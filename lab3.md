@@ -65,6 +65,8 @@ grep -c "weight" ./biomed/1468-6708-3-1.txt
 * -v or --invert-match prints the lines from the file that don't match the given pattern
 * This option can be useful if there are a few lines that don't match a certain pattern
 * Example 1
+
+
 ```
 grep -v "the" ./government/Media/5_Legal_Groups.txt 
 
